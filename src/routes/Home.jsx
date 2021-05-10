@@ -5,10 +5,10 @@ import { Box, Page, H1, NavLinkButton } from '../components/UI';
 const Home = () => (
   <Page backgroundColor="primary">
     <Box display="flex" justifyContent="flex-end" mr="6">
-      <NavLinkButton to="/login" backgroundColor="white" p="3">
+      <NavLinkButton to="/login" backgroundcolor="white" p="3">
         Login
       </NavLinkButton>
-      <NavLinkButton to="/signup" backgroundColor="white" p="3">
+      <NavLinkButton to="/signup" backgroundcolor="white" p="3">
         Sign up
       </NavLinkButton>
     </Box>
@@ -17,7 +17,7 @@ const Home = () => (
         Schedule and plan your event
       </H1>
 
-      <NavLinkButton to="/app" backgroundColor="white">
+      <NavLinkButton to="/app" backgroundcolor="white">
         Explore
       </NavLinkButton>
     </Box>

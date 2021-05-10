@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { Box, Page, Input, Button, H4, P, Image, NavLinkButton } from '../components/UI';
+import { Box, Page, Input, Button, H4, H2, P, Image, NavLinkButton, Icon } from '../components/UI';
 import InputError from '../components/InputError';
 
 const toBase64 = (image) =>
@@ -83,91 +83,107 @@ const UserForm = () => {
   };
 
   return (
-    <Page backgroundColor="grayLighter" p="4">
-      <NavLinkButton
-        to="/app/explore"
-        style={{ float: 'right' }}
-        backgroundcolor="primary"
-        color="white"
-      >
-        Home
-      </NavLinkButton>
-      <H4 pl="5" pt="5" color="primary">
-        Sign Up Here
-      </H4>
-      <Box width="50%">
-        <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
-          <Box>
-            <P>Username</P>
-            <Input
-              type="text"
-              name="username"
-              placeholder="username"
-              value={formik.values.username}
-              onChange={formik.handleChange}
-              borderColor={formik.touched.email && formik.errors.email && 'warning'}
-            />
-            {formik.touched.username && formik.errors.username && (
-              <InputError error={formik.touched.username && formik.errors.username} />
-            )}
-          </Box>
-          <Box>
-            <P>Email</P>
-            <Input
-              type="email"
-              name="email"
-              placeholder="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              borderColor={formik.touched.email && formik.errors.email && 'warning'}
-            />
-            {formik.touched.email && formik.errors.email && (
-              <InputError error={formik.touched.email && formik.errors.email} />
-            )}
-          </Box>
-          <Box>
-            <P>Password</P>
-            <Input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              borderColor={formik.touched.password && formik.errors.password && 'warning'}
-            />
-            {formik.touched.password && formik.errors.password && (
-              <InputError error={formik.touched.password && formik.errors.password} />
-            )}
-          </Box>
+    <Page backgroundColor="grayLighter" p="4" display="flex">
+      <Box flex="0.75" backgroundColor="primary" height="100%">
+        <Box>
+          <NavLinkButton to="/app/explore" p="3" backgroundcolor="white" color="primary">
+            Home
+          </NavLinkButton>
+        </Box>
+        <Box
+          height="85%"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Icon icon="calendar-day" fontSize="12" />
+          <H2 color="white">My Event Planner</H2>
+        </Box>
+      </Box>
+      <Box flex="1">
+        <H4 pl="5" pt="5" color="primary">
+          Sign Up Here
+        </H4>
+        <Box>
+          <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+            <Box>
+              <P>Username</P>
+              <Input
+                type="text"
+                name="username"
+                placeholder="username"
+                value={formik.values.username}
+                onChange={formik.handleChange}
+                borderColor={formik.touched.email && formik.errors.email && 'warning'}
+              />
+              {formik.touched.username && formik.errors.username && (
+                <InputError error={formik.touched.username && formik.errors.username} />
+              )}
+            </Box>
+            <Box>
+              <P>Email</P>
+              <Input
+                type="email"
+                name="email"
+                placeholder="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                borderColor={formik.touched.email && formik.errors.email && 'warning'}
+              />
+              {formik.touched.email && formik.errors.email && (
+                <InputError error={formik.touched.email && formik.errors.email} />
+              )}
+            </Box>
+            <Box>
+              <P>Password</P>
+              <Input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                borderColor={formik.touched.password && formik.errors.password && 'warning'}
+              />
+              {formik.touched.password && formik.errors.password && (
+                <InputError error={formik.touched.password && formik.errors.password} />
+              )}
+            </Box>
 
-          <Box>
-            <P>Image</P>
+            <Box>
+              <P>Image</P>
 
-            {image && (
-              <Box height="200px">
-                <Image maxHeight="190px" src={image} alt="uploaded_user" />
-                <P gutterBottom>{formik.values.image.name}</P>
-              </Box>
-            )}
+              {image && (
+                <Box height="200px">
+                  <Image maxHeight="190px" src={image} alt="uploaded_user" />
+                  <P gutterBottom>{formik.values.image.name}</P>
+                </Box>
+              )}
 
-            <Input
-              type="file"
-              accept="image/*"
-              name="image"
-              placeholder="Select an image"
-              onChange={handleImageChange}
-              borderColor={formik.touched.email && formik.errors.email && 'warning'}
-            />
-            {formik.touched.image && formik.errors.image && (
-              <InputError error={formik.touched.image && formik.errors.image} />
-            )}
-          </Box>
-          <Box>
-            <Button type="submit" backgroundColor="primary" color="white" borderRadius="2">
-              Sign Up
-            </Button>
-          </Box>
-        </form>
+              <Input
+                type="file"
+                accept="image/*"
+                name="image"
+                onChange={handleImageChange}
+                borderColor={formik.touched.image && formik.errors.image && 'warning'}
+              />
+              {formik.touched.image && formik.errors.image && (
+                <InputError error={formik.touched.image && formik.errors.image} />
+              )}
+            </Box>
+            <Box>
+              <Button
+                type="submit"
+                backgroundColor="primary"
+                color="white"
+                borderRadius="2"
+                borderColor="white"
+              >
+                Sign Up
+              </Button>
+            </Box>
+          </form>
+        </Box>
       </Box>
     </Page>
   );

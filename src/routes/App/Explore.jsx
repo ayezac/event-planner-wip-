@@ -20,7 +20,7 @@ const Overview = () => {
     <>
       <Box display="flex">
         <Box>
-          <H1>EXPLORE ALL EVENTS</H1>{' '}
+          <H1>EXPLORE ALL EVENTS</H1>
         </Box>
         <Box width="400px">
           <Search onInputChange={setSearchInput} />

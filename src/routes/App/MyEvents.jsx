@@ -12,9 +12,9 @@ const userEvents = user.events.map((o) => {
 });
 
 const MyEvents = () => (
-  <Box height="100vh" backgroundColor="grayLighter">
+  <Box>
     <Box>
-      <H1>My Events</H1>
+      <H1>MY EVENTS</H1>
     </Box>
     {userEvents.length ? (
       <EventList events={userEvents} />

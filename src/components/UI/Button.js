@@ -36,8 +36,8 @@ export const NavLinkButton = styled(Link)`
   ${buttonCss}
   text-decoration: none;
   padding: ${({ p }) => theme.spacing[p] || '1rem 4rem'};
-  background-color: ${({ backgroundColor }) =>
-    theme.colors[backgroundColor] || theme.colors.primary};
+  background-color: ${({ backgroundcolor }) =>
+    theme.colors[backgroundcolor] || theme.colors.primary};
   &:active {
     transform: translateY(2px);
   }
