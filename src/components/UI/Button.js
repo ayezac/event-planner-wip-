@@ -14,8 +14,11 @@ const buttonCss = css`
   padding: ${({ p }) => theme.spacing[p] || `${theme.spacing[3]} ${theme.spacing[7]}`};
   border-radius: ${({ borderRadius }) => theme.spacing[borderRadius] || theme.spacing[2]};
   border: ${({ borderColor }) =>
-    `1px solid ${theme.colors[borderColor]}` || `1px solid ${theme.colors.primary}`};
-
+    borderColor ? `1px solid ${theme.colors[borderColor]}` : `1px solid ${theme.colors.primary}`};
+  &:focus {
+    outline: ${({ borderColor }) =>
+      borderColor ? `1px solid ${theme.colors[borderColor]}` : `1px solid ${theme.colors.primary}`};
+  }
   &:active {
     color: ${({ color }) => color || 'white'};
     background-color: ${({ backgroundColor }) =>
