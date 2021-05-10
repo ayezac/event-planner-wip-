@@ -10,6 +10,7 @@ import {
   faSearchPlus,
   faCalendarDay,
   faTimes,
+  faImage,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { theme } from '../constants';
@@ -19,7 +20,16 @@ import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
 
-library.add(faUser, faCalendar, faSignInAlt, faUserPlus, faSearchPlus, faCalendarDay, faTimes);
+library.add(
+  faUser,
+  faCalendar,
+  faSignInAlt,
+  faUserPlus,
+  faSearchPlus,
+  faCalendarDay,
+  faTimes,
+  faImage,
+);
 
 const Root = () => (
   <ThemeProvider theme={theme}>
