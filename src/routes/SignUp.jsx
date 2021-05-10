@@ -2,17 +2,9 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
+import { toBase64 } from '../utils';
 import { Box, Page, Input, Button, H4, H2, P, Image, NavLinkButton, Icon } from '../components/UI';
 import InputError from '../components/InputError';
-
-const toBase64 = (image) =>
-  new Promise((resolve, reject) => {
-    const blob = new Blob([image], { type: 'text/plain' });
-    const reader = new FileReader();
-    reader.readAsDataURL(blob);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
 
 const validationSchema = yup.object({
   username: yup.string('Enter a user name').required('A user name is required'),
