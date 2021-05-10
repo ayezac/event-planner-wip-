@@ -4,11 +4,12 @@ import * as yup from 'yup';
 
 import { toBase64 } from '../utils';
 
-import { Box, P, Input, TextArea, Image, Button } from './UI';
+import { Box, P, Input, TextArea, Image, Button, H4 } from './UI';
 import InputError from './InputError';
 
 const validationSchema = yup.object({
   name: yup.string('Add a name for your event').required('An event name is required'),
+  tagLine: yup.string('Add a tag-line for your event').max(40, 'Too long').required('Required'),
   desc: yup.string('Add a description for your event').required('An event description is required'),
   location: yup.string('Add a location for your event').required('An event location is required'),
   date: yup.date('Add a date for your event').required('An event date is required'),
@@ -41,7 +42,7 @@ const CreateEventForm = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
-      subTitle: '',
+      tagLine: '',
       desc: '',
       location: '',
       date: '',
@@ -52,7 +53,7 @@ const CreateEventForm = () => {
     onSubmit: async (values) => {
       const payload = {
         name: values.name,
-        subTitle: values.subTitle,
+        tagLine: values.tagLine,
         desc: values.desc,
         location: values.location,
         date: values.date,
@@ -73,6 +74,7 @@ const CreateEventForm = () => {
 
   return (
     <Box>
+      <H4>Create An Event</H4>
       <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
         <Box>
           <P>Name of the event</P>
@@ -80,7 +82,7 @@ const CreateEventForm = () => {
             width="80%"
             type="text"
             name="name"
-            placeholder="Name of the event"
+            placeholder="Event Name"
             value={formik.values.name}
             onChange={formik.handleChange}
             borderColor={formik.touched.name && formik.errors.name && 'warning'}
@@ -90,13 +92,13 @@ const CreateEventForm = () => {
           )}
         </Box>
         <Box>
-          <P>Subtitle</P>
+          <P>Add a tagline for your event</P>
           <Input
             width="80%"
             type="text"
-            name="subTitle"
-            placeholder="Subtitle"
-            value={formik.values.subTitle}
+            name="tagLine"
+            placeholder="Tagline"
+            value={formik.values.tagLine}
             onChange={formik.handleChange}
           />
         </Box>
