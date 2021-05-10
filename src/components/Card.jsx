@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { Box, P, H3, Image } from './UI';
+import { Box, P, H3, Image, Icon } from './UI';
 
 const CardWrapper = styled(Link)`
   text-decoration: none;
@@ -22,9 +22,13 @@ const CardWrapper = styled(Link)`
 
 const Card = ({ image, title, tagline, desc, where, when, eventLink, response }) => (
   <CardWrapper to={eventLink}>
-    <Box display="flex" flex="2" alignItems="flex-start">
+    <Box display="flex" flex="2" alignItems="space-between">
       <Box borderRadius="0" width="20%" display="flex" justifyContent="center">
-        <Image maxHeight="230px" src={image} alt="card" />
+        {image ? (
+          <Image maxHeight="230px" src={image} alt="card" />
+        ) : (
+          <Icon icon="image" fontSize="10" color="grayDark" />
+        )}
       </Box>
       <Box>
         <H3 color="grayDark">{title}</H3>
@@ -47,25 +51,28 @@ const Card = ({ image, title, tagline, desc, where, when, eventLink, response })
           <P fontSize="3">{when}</P>
         </Box>
       </Box>
-      {response && (
-        <Box width="auto" mt="4" mr="4">
-          <P fontSize="3" isBold color="primary2">
-            {response}
+    </Box>
+    {response && (
+      <Box display="flex" alignItems="center" mr="6">
+        <Box backgroundColor="primary">
+          <P fontSize="4" isBold color="white">
+            {response.toUpperCase()}
           </P>
         </Box>
-      )}
-    </Box>
+      </Box>
+    )}
   </CardWrapper>
 );
 Card.defaultProps = {
   tagline: '',
   response: null,
+  image: null,
 };
 
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   tagline: PropTypes.string,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   desc: PropTypes.string.isRequired,
   where: PropTypes.string.isRequired,
   when: PropTypes.string.isRequired,
