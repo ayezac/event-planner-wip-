@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { H1, H3, Box } from '../../components/UI';
+import { H1, H3, Box, SlideInPortal, Button, Icon } from '../../components/UI';
 import EventList from '../../components/EventList';
+import CreateEventForm from '../../components/CreateEventForm';
 import users from '../../data/users';
 import events from '../../data/events';
 
@@ -11,19 +12,38 @@ const userEvents = user.events.map((o) => {
   return { ...event, response: o.response };
 });
 
-const MyEvents = () => (
-  <Box>
+const MyEvents = () => {
+  const [openForm, setOpenForm] = useState(false);
+
+  return (
     <Box>
-      <H1>MY EVENTS</H1>
-    </Box>
-    {userEvents.length ? (
-      <EventList events={userEvents} />
-    ) : (
       <Box>
-        <H3>You are not attending any events at the moment</H3>
+        <H1>MY EVENTS</H1>
+        <Button onClick={() => setOpenForm(true)}>Create an Event</Button>
       </Box>
-    )}
-  </Box>
-);
+      {userEvents.length ? (
+        <EventList events={userEvents} />
+      ) : (
+        <Box>
+          <H3>You are not attending any events at the moment</H3>
+        </Box>
+      )}
+
+      <SlideInPortal isOpen={openForm}>
+        <Button
+          onClick={() => setOpenForm(false)}
+          p="2"
+          borderRadius="1"
+          backgroundColor="primary"
+          m="0"
+          style={{ float: 'right' }}
+        >
+          <Icon icon="times" fontSize="5" />
+        </Button>
+        <CreateEventForm />
+      </SlideInPortal>
+    </Box>
+  );
+};
 
 export default MyEvents;
