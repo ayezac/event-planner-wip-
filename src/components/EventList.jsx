@@ -14,7 +14,8 @@ const EventList = ({ events }) => (
         tagline={event.tagline || ''}
         desc={event.desc}
         where={event.location}
-        when={event.time}
+        date={event.date}
+        time={event.time}
         eventLink={`/app/event/${event.id}`}
         response={event.response}
       />

@@ -20,7 +20,7 @@ const CardWrapper = styled(Link)`
   }
 `;
 
-const Card = ({ image, title, tagline, desc, where, when, eventLink, response }) => (
+const Card = ({ image, title, tagline, desc, where, date, time, eventLink, response }) => (
   <CardWrapper to={eventLink}>
     <Box display="flex" flex="2" alignItems="space-between">
       <Box borderRadius="0" width="20%" display="flex" justifyContent="center">
@@ -48,7 +48,10 @@ const Card = ({ image, title, tagline, desc, where, when, eventLink, response })
           <P mr="4" fontSize="3" isBold color="primary2">
             WHEN:
           </P>
-          <P fontSize="3">{when}</P>
+          <P fontSize="3" mr="3">
+            {date} at
+          </P>
+          <P fontSize="3">{time}</P>
         </Box>
       </Box>
     </Box>
@@ -75,7 +78,8 @@ Card.propTypes = {
   image: PropTypes.string,
   desc: PropTypes.string.isRequired,
   where: PropTypes.string.isRequired,
-  when: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
   eventLink: PropTypes.string.isRequired,
   response: PropTypes.string,
 };

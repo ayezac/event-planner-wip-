@@ -71,6 +71,9 @@ const Overview = () => {
         <P mr="4" fontSize="5" isBold color="primary2">
           DATE and TIME:
         </P>
+        <P fontSize="5" mr="3">
+          {event.date} at
+        </P>
         <P fontSize="5">{event.time}</P>
       </Box>
     </Box>

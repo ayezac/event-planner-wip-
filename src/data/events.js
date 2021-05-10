@@ -10,7 +10,8 @@ const events = [
     tagline: 'Lets celebrate',
     desc: 'Come one come all for the party of the decade',
     location: 'Stockholm, Sweden',
-    time: 'May 2nd, 2021, 17:00',
+    date: 'May 2nd, 2021',
+    time: '17:00',
   },
   {
     id: '2',
@@ -19,7 +20,8 @@ const events = [
     tagline: 'Discussing all things tech',
     desc: 'A space for tech entrepreneurs to share ideas and resources',
     location: 'Stockholm, Sweden',
-    time: 'June 22nd, 2021, 18:00',
+    date: 'June 22nd, 2021',
+    time: '18:00',
   },
   {
     id: '3',
@@ -28,7 +30,8 @@ const events = [
     tagline: 'Demanding justice for ...',
     desc: 'Make your voice heard by standing up for ...',
     location: 'Humlegården, Stockholm',
-    time: 'May 31st, 2021, 12:00pm',
+    date: 'May 31st, 2021',
+    time: '12:00pm',
   },
 ];
 
